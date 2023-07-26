@@ -20,16 +20,17 @@ namespace Snake
         {
             InitializeComponent();
         }
-        readonly int SQUARE_SIZE = 16;
+        const int SQUARE_SIZE = 16;
 
-        readonly string SNAKE_HEAD_COLOR = "#7C73C0";
-        readonly string SNAKE_BODY_COLOR = "#94ADD7";
+        const string SNAKE_HEAD_COLOR = "#7C73C0";
+        const string SNAKE_BODY_COLOR = "#94ADD7";
 
-        readonly string FRUIT_COLOR = "#E8FFCE";
-        readonly string OBSTACLE_COLOR = "#EF6262";
+        const string FRUIT_COLOR = "#E8FFCE";
+        const string OBSTACLE_COLOR = "#EF6262";
 
+        const int FRUIT_SCORE = 100;
 
-        readonly int FRUIT_SCORE = 100;
+        const int MIN_OBSTACLE_HEIGHT = 2;
 
         private int FIELD_WIDTH;
         private int FIELD_HEIGHT;
@@ -191,25 +192,28 @@ namespace Snake
 
                 do
                 {
-                    obstacleX = random.Next(1, FIELD_WIDTH - 1);  // 0 negative, 1 positive
-                    obstacleY = random.Next(1, FIELD_HEIGHT - 1); // 0 negative, 1 positive
-                } while (obstacleX == FIELD_WIDTH / 2 && 
-                        (obstacleY == FIELD_HEIGHT / 2 || obstacleY == FIELD_HEIGHT / 2 + 1 || obstacleY == FIELD_HEIGHT / 2 + 2) || 
-                            obstacleArray.Any(cord =>  (cord.X == obstacleX && cord.Y == obstacleY) ||
-                                                       (cord.X == obstacleX + 1 && cord.Y == obstacleY) ||
-                                                       (cord.X == obstacleX - 1 && cord.Y == obstacleY) ||
-                                                       (cord.X == obstacleX + 1 && cord.Y == obstacleY + 1) ||
-                                                       (cord.X == obstacleX + 1 && cord.Y == obstacleY - 1) ||
-                                                       (cord.X == obstacleX - 1 && cord.Y == obstacleY + 1) ||
-                                                       (cord.X == obstacleX - 1 && cord.Y == obstacleY - 1) ||
-                                                       (cord.X == obstacleX && cord.Y == obstacleY + 1) ||
-                                                       (cord.X == obstacleX && cord.Y == obstacleY - 1)));
+                    obstacleX = random.Next(0, FIELD_WIDTH);
+                    obstacleY = random.Next(1, 3) == 1 ?
+                                random.Next(MIN_OBSTACLE_HEIGHT, FIELD_HEIGHT / 2 - 2) :
+                                random.Next(FIELD_HEIGHT / 2 + 2, FIELD_HEIGHT); // Generate from two ranges
 
-                obstacleArray.Add(new Point(obstacleX, obstacleY));
-                obstacleArray.Add(new Point(obstacleX + 1, obstacleY));
-                obstacleArray.Add(new Point(obstacleX - 1, obstacleY));
-                obstacleArray.Add(new Point(obstacleX, obstacleY + 1));
-                obstacleArray.Add(new Point(obstacleX, obstacleY - 1));
+                } while (obstacleArray.Any(cord => Math.Abs(cord.X - obstacleX) < 2) || obstacleX == FIELD_WIDTH / 2);
+
+                // Create a vertical line of obstacle
+                if (obstacleY < FIELD_HEIGHT / 2)
+                {
+                    for(int j = 0; j < obstacleY; j++)
+                    {
+                        obstacleArray.Add(new Point(obstacleX, j));
+                    }
+                } else
+                {
+                    for (int j = obstacleY; j < FIELD_HEIGHT; j++)
+                    {
+                        obstacleArray.Add(new Point(obstacleX, j));
+                    }
+                }
+
             }
 
         }
