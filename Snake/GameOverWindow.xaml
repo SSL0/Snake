@@ -1,0 +1,30 @@
+﻿<Window x:Class="Snake.GameOverWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Snake"
+        mc:Ignorable="d"
+        Title="ИГРА ОКОНЧЕНА!" ResizeMode="NoResize" Icon="icon.png" Width="249" SizeToContent="Height" Loaded="Window_Loaded">
+    <Grid>
+        <StackPanel>
+            <Label x:Name="ScoreLabel" VerticalAlignment="Top" HorizontalAlignment="Center">
+                Счет:
+            </Label>
+            <TextBlock Foreground="#F67280" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" Height="36" Margin="10 0 10 10" FontSize="13">
+                Игра завершена! 
+                Запишите свое имя, чтобы сохранить результат
+            </TextBlock>
+            <TextBox x:Name="PlayerNameTextBox" Margin="10 0 10 0" Padding="2" IsHitTestVisible="True" >
+                Игрок
+            </TextBox>
+            <DockPanel>
+                <Button x:Name="SaveButton" DockPanel.Dock="Left" Margin="10" Background="#54A593" Foreground="White" Width="102" Click="SaveButton_Click">Сохранить</Button>
+                <Button x:Name="CancelButton" DockPanel.Dock="Left" Margin="10" Background="#F67280" Foreground="White" Click="CancelButton_Click">Отмена</Button>
+
+            </DockPanel>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
