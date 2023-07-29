@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake"
         mc:Ignorable="d"
-        Title="Об игре" ResizeMode="NoResize" Icon="icon.png" Width="473" SizeToContent="Height">
+        Title="Об игре" ResizeMode="NoResize" Icon="icon.png" Width="552" SizeToContent="Height">
     <Grid>
         <StackPanel Margin="5">
             <TextBlock TextAlignment="Center" FontSize="30" Foreground="#54A593">ЗМЕЙКА</TextBlock>
-            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="16">Игрок управляет длинным, тонким существом, напоминающим змею, которое ползает по плоскости, собирая еду, избегая столкновения с собственным хвостом и препятствиями. Каждый раз, когда змея съедает кусок пищи, она становится длиннее, что постепенно усложняет игру.</TextBlock>
+            <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="16">Игрок управляет длинным, тонким существом, напоминающим змею, которое ползает по плоскости, собирая еду, избегая столкновения с собственным хвостом и препятствиями. Каждый раз, когда змея съедает кусок пищи, она становится длиннее, что постепенно усложняет игру. Препятствия обозначены красным цветом, фрукты - желтым. Игрок может выбирать уровень сложности. От уровня зависит скорость змейки, количество препятсвий на поле, очки за фрукты</TextBlock>
             <StackPanel HorizontalAlignment="Center">
 
                 <Label FontSize="20" Foreground="#F67280">Управление:</Label>
